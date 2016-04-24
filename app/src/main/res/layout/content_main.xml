@@ -13,21 +13,38 @@
     tools:showIn="@layout/activity_main"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="..."
+    <ImageButton
+        android:layout_width="150sp"
+        android:layout_height="150sp"
         android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:id="@+id/tvPrint"/>
-
+        android:background="@drawable/add_wine"
+        android:id="@+id/addWineImageBtn"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_vertical"
-        android:text="@string/btn"
+        android:text="@string/addBtn"
         android:padding="10dp"
-        android:textSize="30dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:id="@+id/btnBtn"/>
+
+    <ImageButton
+        android:layout_marginTop="50sp"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:layout_gravity="center"
+        android:background="@drawable/list_wines"
+        android:id="@+id/listWineImageBtn"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:text="@string/listBtn"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:textAllCaps="false"
         android:id="@+id/btnBtn"/>
 </LinearLayout>
