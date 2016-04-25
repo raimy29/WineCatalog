@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import mobsoft.winecatalog.interactor.InteractorModule;
-import mobsoft.winecatalog.interactor.StringInteractor;
+import mobsoft.winecatalog.interactor.WineInteractor;
 import mobsoft.winecatalog.model.ModelModule;
 import mobsoft.winecatalog.presenter.MainPresenter;
 import mobsoft.winecatalog.view.MainActivity;
@@ -20,5 +20,5 @@ public interface MVPApplicationComponent {
 
         void inject(MainPresenter mainPresenter);
 
-        void inject(StringInteractor stringInteractor);
+        void inject(WineInteractor wineInteractor);
 }

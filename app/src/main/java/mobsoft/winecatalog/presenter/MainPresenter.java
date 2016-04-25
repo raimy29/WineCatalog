@@ -3,7 +3,7 @@ package mobsoft.winecatalog.presenter;
 import javax.inject.Inject;
 
 import mobsoft.winecatalog.MVPApplication;
-import mobsoft.winecatalog.interactor.StringInteractor;
+import mobsoft.winecatalog.interactor.WineInteractor;
 import mobsoft.winecatalog.view.MainView;
 
 /**
@@ -12,13 +12,14 @@ import mobsoft.winecatalog.view.MainView;
 public class MainPresenter extends Presenter<MainView> {
 
     @Inject
-    public StringInteractor interactor;
+    public WineInteractor interactor;
 
     public MainPresenter() {
         MVPApplication.injector.inject(this);
     }
 
     public void doStuff() {
-        view.showString(interactor.getString());
+        view.showString(interactor.getName());
+
     }
 }

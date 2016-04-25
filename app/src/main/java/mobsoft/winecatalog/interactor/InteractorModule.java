@@ -1,9 +1,5 @@
 package mobsoft.winecatalog.interactor;
 
-import android.content.Context;
-
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -13,7 +9,7 @@ import dagger.Provides;
 @Module
 public class InteractorModule {
     @Provides
-    public StringInteractor getStringInteractor() {
-        return new StringInteractor();
+    public WineInteractor getWineInteractor() {
+        return new WineInteractor();
     }
 }

@@ -1,8 +1,7 @@
 package mobsoft.winecatalog.view;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -22,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Inject
     MainPresenter mainPresenter;
 
+    private AlertDialog.Builder alert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         MVPApplication.injector.inject(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        alert = new AlertDialog.Builder(MainActivity.this);
 
         findViewById(R.id.btnBtn).setOnClickListener(new Button.OnClickListener() {
 
@@ -85,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showString(String s) {
-        ((TextView)findViewById(R.id.tvPrint)).setText(s);
+        alert.setTitle(s);
+        alert.show();
     }
 }
