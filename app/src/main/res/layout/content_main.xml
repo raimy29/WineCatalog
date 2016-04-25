@@ -29,7 +29,7 @@
         android:padding="10dp"
         android:textSize="20dp"
         android:textAllCaps="false"
-        android:id="@+id/btnBtn"/>
+        android:id="@+id/addWineBtn"/>
 
     <ImageButton
         android:layout_marginTop="50sp"
@@ -47,5 +47,5 @@
         android:padding="10dp"
         android:textSize="20dp"
         android:textAllCaps="false"
-        android:id="@+id/btnBtn"/>
+        android:id="@+id/listWineBtn"/>
 </LinearLayout>

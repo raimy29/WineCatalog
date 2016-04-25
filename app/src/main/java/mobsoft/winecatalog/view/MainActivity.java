@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         alert = new AlertDialog.Builder(MainActivity.this);
 
-        findViewById(R.id.btnBtn).setOnClickListener(new Button.OnClickListener() {
+        findViewById(R.id.addWineBtn).setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View v) {
