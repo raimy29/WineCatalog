@@ -1,5 +1,6 @@
 package mobsoft.winecatalog.interactor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -21,15 +22,17 @@ public class WinesInteractor {
     }
 
     public List<Wine> getWines() {
-        if (userModel == null)
-            userModel = new User("Raimy", "123abc");
-        return userModel.getWines();
+        List<Wine> result = new ArrayList<>();
+        if (userModel != null)
+            return result = userModel.getWines();
+        return result;
     }
 
     public String getUsername() {
-        if (userModel == null)
-            userModel = new User("Raimy", "123abc");
-        return userModel.getUsername();
+        String username = "";
+        if (userModel != null)
+            username = userModel.getUsername();
+        return username;
     }
 
 }

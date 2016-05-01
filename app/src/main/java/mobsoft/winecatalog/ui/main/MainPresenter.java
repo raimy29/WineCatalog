@@ -14,7 +14,8 @@ public class MainPresenter extends Presenter<MainScreen> {
     @Inject
     public WinesInteractor interactor;
 
-    public MainPresenter() { WineCatalogApplication.injector.inject(this);
+    public MainPresenter() {
+        WineCatalogApplication.injector.inject(this);
     }
 
     public void listWines() {

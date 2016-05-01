@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
 
         WineCatalogApplication.injector.inject(this);
 
-
         ImageButton imgBtnAddWine = (ImageButton) findViewById(R.id.addWineImageBtn);
         imgBtnAddWine.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,6 +17,10 @@ public class WineListPresenter extends Presenter<WineListScreen> {
     @Inject
     public WinesInteractor interactor;
 
+    public WineListPresenter() {
+        WineCatalogApplication.injector.inject(this);
+    }
+
     @Override
     public void attachScreen(WineListScreen screen) {
         super.attachScreen(screen);
@@ -33,10 +37,6 @@ public class WineListPresenter extends Presenter<WineListScreen> {
 
     public void showDetails(final Wine wine) {
         screen.showWineDetails(wine);
-    }
-
-    public void refreshWineList(final String username) {
-         interactor.getWines();
     }
 
     public String getUsername() {
