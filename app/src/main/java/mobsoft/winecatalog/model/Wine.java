@@ -1,11 +1,13 @@
 package mobsoft.winecatalog.model;
 
+import com.orm.SugarRecord;
+
 import java.util.List;
 
 /**
  * Created by Raimy on 10/04/2016.
  */
-public class WineModel {
+public class Wine extends SugarRecord {
 
     private enum Type {
         FEHER, VOROS, ROSE
@@ -17,15 +19,15 @@ public class WineModel {
     private Type type;
     private int rating;
 
-    public WineModel() { }
+    private User user;
 
-    public WineModel(String name) {
+    public Wine() { }
+
+    public Wine(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return "Sauska";
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
@@ -62,5 +64,9 @@ public class WineModel {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
 
 }

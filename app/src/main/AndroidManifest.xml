@@ -3,21 +3,32 @@
     package="mobsoft.winecatalog">
 
     <application
-        android:name=".MVPApplication"
+        android:name=".WineCatalogApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="DATABASE" android:value="sugar_example.db" />
+        <meta-data android:name="VERSION" android:value="2" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.winelist.WineListActivity"
+            android:label="@string/wineList">
+        </activity>
+        <activity
+            android:name=".ui.details.WineDetailsActivity"
+            android:label="@string/wineDetails">
         </activity>
     </application>
 

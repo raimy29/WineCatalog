@@ -1,4 +1,4 @@
-package mobsoft.winecatalog.view;
+package mobsoft.winecatalog.ui;
 
 import android.content.Context;
 
@@ -6,16 +6,16 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import mobsoft.winecatalog.presenter.MainPresenter;
+import mobsoft.winecatalog.ui.main.MainPresenter;
 
 /**
  * Created by Raimy on 10/04/2016.
  */
 @Module
-public class ViewModule {
+public class UIModule {
     private Context context;
 
-    public ViewModule(Context context) {
+    public UIModule(Context context) {
         this.context = context;
     }
 
@@ -29,4 +29,5 @@ public class ViewModule {
     public MainPresenter getMainPresenter() {
         return new MainPresenter();
     }
+
 }

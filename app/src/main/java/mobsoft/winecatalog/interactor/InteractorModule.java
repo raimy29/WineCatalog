@@ -9,7 +9,7 @@ import dagger.Provides;
 @Module
 public class InteractorModule {
     @Provides
-    public WineInteractor getWineInteractor() {
-        return new WineInteractor();
+    public WinesInteractor getWinesInteractor() {
+        return new WinesInteractor();
     }
 }

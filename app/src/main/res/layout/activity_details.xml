@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Name"
+        android:id="@+id/tvName"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tfName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Winery"
+        android:id="@+id/tvWinery"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tfWinery"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Grape Variety"
+        android:id="@+id/tvVariety"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tfGrapeVariety" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Type"
+            android:id="@+id/tvType"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Rating"
+            android:id="@+id/tvRating"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Spinner
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ddType"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:prompt="@string/type_prompt"/>
+
+        <Spinner
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ddRating"
+            android:spinnerMode="dialog"
+            android:layout_gravity="center_horizontal"
+            android:prompt="@string/rating_prompt"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:text="@string/saveBtn"
+        android:id="@+id/saveWineBtn"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:layout_marginTop="15dp" />
+
+</LinearLayout>

@@ -9,7 +9,11 @@ import dagger.Provides;
 @Module
 public class ModelModule {
     @Provides
-    public WineModel getWineModel() {
-        return new WineModel();
+    public Wine getWineModel() {
+        return new Wine();
+    }
+    @Provides
+    public User getUserModel() {
+        return new User("Test", "test123");
     }
 }

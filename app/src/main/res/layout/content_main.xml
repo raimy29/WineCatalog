@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.MainActivity"
+    tools:context=".ui.main.MainActivity"
     tools:showIn="@layout/activity_main"
     android:orientation="vertical">
 
@@ -37,7 +37,7 @@
         android:layout_height="150sp"
         android:layout_gravity="center"
         android:background="@drawable/list_wines"
-        android:id="@+id/listWineImageBtn"/>
+        android:id="@+id/listWinesImageBtn"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,5 +47,5 @@
         android:padding="10dp"
         android:textSize="20dp"
         android:textAllCaps="false"
-        android:id="@+id/listWineBtn"/>
+        android:id="@+id/listWinesBtn"/>
 </LinearLayout>
