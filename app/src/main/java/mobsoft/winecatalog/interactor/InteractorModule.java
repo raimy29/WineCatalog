@@ -12,4 +12,9 @@ public class InteractorModule {
     public WinesInteractor getWinesInteractor() {
         return new WinesInteractor();
     }
+
+    @Provides
+    public UserInteractor getUserInteractor() {
+        return new UserInteractor();
+    }
 }

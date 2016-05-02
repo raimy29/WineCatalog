@@ -15,11 +15,11 @@ import mobsoft.winecatalog.model.prod.WineDbModel;
  */
 public class MockWineDbModel extends WineDbModel {
 
-    @Inject
     MockUserDbModel mockUserDb;
     LinkedList<Wine> values = new LinkedList<>();
 
     public MockWineDbModel() {
+        mockUserDb = new MockUserDbModel();
         for (User user : mockUserDb.fetchUsers()) {
             for (int i = 2010; i < 2015; i++) {
                 Wine wine = new Wine();
@@ -44,24 +44,26 @@ public class MockWineDbModel extends WineDbModel {
     }
 
     @Override
-    public List<Wine> fetchWinesOfUser(User actualUser) {
-        List<Wine> values = new ArrayList<>();
-        User user = mockUserDb.getUser(actualUser.getUsername());
+    public List<Wine> fetchWinesOfUser(String username) {
+        List<Wine> result = new ArrayList<>();
+        User user = mockUserDb.getUser(username);
         if (user != null)
-            values = user.getWines();
-        return values;
+            for (Wine wine : values) {
+                if (wine.getUser().equals(user))
+                    result.add(wine);
+            }
+        return result;
     }
 
     @Override
-    public void insertWineForUser(User user, Wine wine) {
-        mockUserDb.insertUser(user);
-        wine.setUser(user);
+    public void insertWineForUser(Wine wine) {
+        mockUserDb.insertUser(wine.getUser());
         values.add(wine);
     }
 
     @Override
-    public void deleteWineFromUser(User user, Wine wine) {
-        List<Wine> wines = fetchWinesOfUser(user);
+    public void deleteWineFromUser(Wine wine) {
+        List<Wine> wines = fetchWinesOfUser(wine.getUser().getUsername());
         if (wines.contains(wine))
             wines.remove(wine);
         if (values.contains(wine))

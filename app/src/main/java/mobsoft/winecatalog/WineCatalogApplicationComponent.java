@@ -4,11 +4,13 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import mobsoft.winecatalog.interactor.InteractorModule;
+import mobsoft.winecatalog.interactor.UserInteractor;
 import mobsoft.winecatalog.interactor.WinesInteractor;
 import mobsoft.winecatalog.model.prod.ModelModule;
 import mobsoft.winecatalog.ui.main.MainActivity;
 import mobsoft.winecatalog.ui.UIModule;
 import mobsoft.winecatalog.ui.main.MainPresenter;
+import mobsoft.winecatalog.ui.winelist.WineListActivity;
 import mobsoft.winecatalog.ui.winelist.WineListPresenter;
 
 /**
@@ -17,13 +19,18 @@ import mobsoft.winecatalog.ui.winelist.WineListPresenter;
 @Singleton
 @Component(modules = {UIModule.class, InteractorModule.class, ModelModule.class})
 public interface WineCatalogApplicationComponent {
-        void inject(MainActivity activity);
+        void inject(MainActivity mainActivity);
 
-        void inject(MainPresenter presenter);
+        void inject(WineListActivity wineListActivity);
 
-        void inject(WineListPresenter presenter);
+        void inject(MainPresenter mainPresenter);
 
-        void inject(WinesInteractor interactor);
+        void inject(WineListPresenter wineListPresenter);
 
+        void inject(WinesInteractor winesInteractor);
+
+        void inject(UserInteractor userInteractor);
+
+        void inject(WineCatalogApplication app);
 
 }

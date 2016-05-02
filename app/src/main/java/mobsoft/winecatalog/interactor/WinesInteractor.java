@@ -1,14 +1,11 @@
 package mobsoft.winecatalog.interactor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import mobsoft.winecatalog.WineCatalogApplication;
-import mobsoft.winecatalog.model.User;
 import mobsoft.winecatalog.model.Wine;
-import mobsoft.winecatalog.model.prod.UserDbModel;
 import mobsoft.winecatalog.model.prod.WineDbModel;
 
 /**
@@ -23,15 +20,29 @@ public class WinesInteractor {
         WineCatalogApplication.injector.inject(this);
     }
 
-    public void addWineToDb(User user, Wine wine) {
-        model.insertWineForUser(user, wine);
+    public void addWineToDb(Wine wine) {
+        model.insertWineForUser(wine);
     }
 
-    public List<Wine> getWinesFromDb() {
+    public void addWineToNetwork(Wine wine) throws Exception {
+
+    }
+
+    public List<Wine> getAllWinesFromDb() {
         return model.fetchWines();
     }
 
-    public List<Wine> getWinesOfUserFromDb(User user) {
-        return model.fetchWinesOfUser(user);
+    public List<Wine> getAllWinesFromNetwork() throws Exception {
+        throw new Exception("Exception");
     }
+
+    public List<Wine> getWinesOfUserFromDb(String username) {
+        return model.fetchWinesOfUser(username);
+    }
+
+    public List<Wine> getWinesOfUserFromNetwork(String username) throws  Exception {
+        throw new Exception("Exception");
+    }
+
+
 }

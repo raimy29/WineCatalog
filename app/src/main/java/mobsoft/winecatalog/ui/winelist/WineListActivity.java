@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.orm.SugarContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +17,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import mobsoft.winecatalog.R;
+import mobsoft.winecatalog.WineCatalogApplication;
+import mobsoft.winecatalog.model.User;
 import mobsoft.winecatalog.model.Wine;
 import mobsoft.winecatalog.ui.details.WineDetailsActivity;
+import mobsoft.winecatalog.ui.main.MainActivity;
 
 public class WineListActivity extends AppCompatActivity implements WineListScreen {
 
@@ -23,25 +29,42 @@ public class WineListActivity extends AppCompatActivity implements WineListScree
     WineListPresenter wineListPresenter;
 
     private ListView listView;
-    private TextView tvEmpty;
     private WinesAdapter winesAdapter;
     private List<Wine> wineList;
-    private String username = "Raimy";
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winelist);
+        WineCatalogApplication.injector.inject(this);
+        username = (String) getIntent().getExtras().get(MainActivity.KEY_USER);
         setTitle(getTitle() + " - " + username);
-        tvEmpty = (TextView) findViewById(R.id.tvEmpty);
 
         wineList = new ArrayList<>();
-        winesAdapter = new WinesAdapter(this, wineList);
+        winesAdapter = new WinesAdapter(this, R.layout.wine_item, wineList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(winesAdapter);
+    }
 
-        if (BuildConfig.FLAVOR.equals("mock")) {
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        wineListPresenter.attachScreen(this);
+        wineListPresenter.refreshWines(username);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        wineListPresenter.detachScreen();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        wineListPresenter.detachScreen();
     }
 
     @Override
@@ -52,10 +75,8 @@ public class WineListActivity extends AppCompatActivity implements WineListScree
 
         if (wineList.isEmpty()) {
             listView.setVisibility(View.GONE);
-            tvEmpty.setVisibility(View.VISIBLE);
         } else {
             listView.setVisibility(View.VISIBLE);
-            tvEmpty.setVisibility(View.GONE);
         }
     }
 
@@ -63,5 +84,10 @@ public class WineListActivity extends AppCompatActivity implements WineListScree
     public void showWineDetails(Wine wine) {
         Intent intent  = new Intent(WineListActivity.this, WineDetailsActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

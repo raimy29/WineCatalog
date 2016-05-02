@@ -9,12 +9,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.orm.SugarContext;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import mobsoft.winecatalog.WineCatalogApplication;
 import mobsoft.winecatalog.R;
+import mobsoft.winecatalog.model.User;
+import mobsoft.winecatalog.model.Wine;
 import mobsoft.winecatalog.ui.details.WineDetailsActivity;
 import mobsoft.winecatalog.ui.winelist.WineListActivity;
 
@@ -23,14 +34,20 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Inject
     MainPresenter mainPresenter;
 
+    public User user;
+    public static final String KEY_USER = "KEY_USER";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        SugarContext.init(this);
         WineCatalogApplication.injector.inject(this);
+
+        user = new User("Demo");
+        mainPresenter.addUser(user);
 
         ImageButton imgBtnAddWine = (ImageButton) findViewById(R.id.addWineImageBtn);
         imgBtnAddWine.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
                 mainPresenter.listWines();
             }
         });
-
 
         Button btnAddWine = (Button) findViewById(R.id.addWineBtn);
         btnAddWine.setOnClickListener(new View.OnClickListener() {
@@ -73,22 +89,32 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        mainPresenter.detachScreen();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         mainPresenter.detachScreen();
     }
 
     @Override
-    public void listWines(String username) {
+    public void listWines() {
         Intent intent = new Intent(MainActivity.this, WineListActivity.class);
+        intent.putExtra(KEY_USER, user.getUsername());
         startActivity(intent);
     }
 
     @Override
-    public void addWine(String username) {
+    public void addWine() {
         Intent intent = new Intent(MainActivity.this, WineDetailsActivity.class);
         startActivity(intent);
     }
 
-
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
 }

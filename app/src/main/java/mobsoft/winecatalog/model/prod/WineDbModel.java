@@ -15,7 +15,7 @@ import mobsoft.winecatalog.model.Wine;
 public class WineDbModel {
 
     @Inject
-    private UserDbModel userDb;
+    public UserDbModel userDb;
 
     public WineDbModel() { }
 
@@ -23,22 +23,21 @@ public class WineDbModel {
         List<Wine> values = Wine.listAll(Wine.class);
         return values;
     }
-    public List<Wine> fetchWinesOfUser(User actualUser) {
+    public List<Wine> fetchWinesOfUser(String username) {
         List<Wine> values = new ArrayList<>();
-        User user = userDb.getUser(actualUser.getUsername());
+        User user = userDb.getUser(username);
         if (user != null)
             values = user.getWines();
         return values;
     }
 
-    public void insertWineForUser(User user, Wine wine) {
-        user.save();
-        wine.setUser(user);
+    public void insertWineForUser(Wine wine) {
+        wine.getUser().save();
         wine.save();
     }
 
-    public void deleteWineFromUser(User user, Wine wine) {
-        List<Wine> wines = fetchWinesOfUser(user);
+    public void deleteWineFromUser(Wine wine) {
+        List<Wine> wines = fetchWinesOfUser(wine.getUser().getUsername());
         for (Wine w : wines) {
             if (w.getId().equals(wine.getId())) {
                 w.delete();

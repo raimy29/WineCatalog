@@ -20,8 +20,8 @@ import mobsoft.winecatalog.model.Wine;
  */
 public class WinesAdapter extends ArrayAdapter<Wine> {
 
-    public WinesAdapter(Context context, List<Wine> wineList) {
-        super(context, 0, wineList);
+    public WinesAdapter(Context context, int textViewResoruceId, List<Wine> wineList) {
+        super(context, textViewResoruceId, wineList);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class WinesAdapter extends ArrayAdapter<Wine> {
         viewHolder.winery.setText(wine.getWinery());
         return convertView;
     }
+
 
     private static class ViewHolder {
         TextView name;

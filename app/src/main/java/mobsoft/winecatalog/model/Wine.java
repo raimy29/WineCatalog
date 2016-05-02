@@ -15,7 +15,7 @@ public class Wine extends SugarRecord {
 
     private String name;
     private String winery;
-    private List<String> grapeVariety;
+    private String grapeVariety;
     private Type type;
     private int rating;
 
@@ -41,11 +41,11 @@ public class Wine extends SugarRecord {
         this.winery = winery;
     }
 
-    public List<String> getGrapeVariety() {
+    public String getGrapeVariety() {
         return grapeVariety;
     }
 
-    public void setGrapeVariety(List<String> grapeVariety) {
+    public void setGrapeVariety(String grapeVariety) {
         this.grapeVariety = grapeVariety;
     }
 

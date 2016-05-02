@@ -14,18 +14,20 @@ public class MockUserDbModel extends UserDbModel {
     LinkedList<User> values = new LinkedList<>();
 
     public MockUserDbModel() {
-        values.add(new User("Test", "123"));
-        values.add(new User("Demo", "demo"));
+        values.add(new User("Test"));
+        values.add(new User("Demo"));
     }
 
     @Override
     public User getUser(String username) {
+        User res = null;
         for (User user : values) {
             if (user.getUsername().contentEquals(username)) {
-                return user;
+                res = user;
+                break;
             }
         }
-        return null;
+        return res;
     }
 
     @Override

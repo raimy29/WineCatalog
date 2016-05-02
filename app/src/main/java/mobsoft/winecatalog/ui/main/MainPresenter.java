@@ -3,7 +3,10 @@ package mobsoft.winecatalog.ui.main;
 import javax.inject.Inject;
 
 import mobsoft.winecatalog.WineCatalogApplication;
+import mobsoft.winecatalog.interactor.UserInteractor;
 import mobsoft.winecatalog.interactor.WinesInteractor;
+import mobsoft.winecatalog.model.User;
+import mobsoft.winecatalog.model.Wine;
 import mobsoft.winecatalog.ui.Presenter;
 
 /**
@@ -12,17 +15,21 @@ import mobsoft.winecatalog.ui.Presenter;
 public class MainPresenter extends Presenter<MainScreen> {
 
     @Inject
-    public WinesInteractor interactor;
+    public UserInteractor userInteractor;
 
     public MainPresenter() {
         WineCatalogApplication.injector.inject(this);
     }
 
     public void listWines() {
-        screen.listWines(interactor.getUsername());
+        screen.listWines();
     }
 
     public void addWine() {
-        screen.addWine(interactor.getUsername());
+        screen.addWine();
+    }
+
+    public void addUser(User user) {
+        userInteractor.addUser(user);
     }
 }

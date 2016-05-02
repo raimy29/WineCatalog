@@ -11,4 +11,6 @@ public interface WineListScreen {
     void showWines(List<Wine> wines);
 
     void showWineDetails(Wine wine);
+
+    void showMessage(String message);
 }
