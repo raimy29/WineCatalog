@@ -19,6 +19,16 @@ public class MockUserDbModel extends UserDbModel {
     }
 
     @Override
+    public User getUser(String username) {
+        for (User user : values) {
+            if (user.getUsername().contentEquals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public List<User> fetchUsers() {
         return values;
     }

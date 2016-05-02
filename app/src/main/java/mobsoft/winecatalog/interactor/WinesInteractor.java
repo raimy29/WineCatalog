@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import mobsoft.winecatalog.WineCatalogApplication;
 import mobsoft.winecatalog.model.User;
 import mobsoft.winecatalog.model.Wine;
+import mobsoft.winecatalog.model.prod.UserDbModel;
+import mobsoft.winecatalog.model.prod.WineDbModel;
 
 /**
  * Created by Raimy on 5/1/2016.
@@ -15,24 +17,21 @@ import mobsoft.winecatalog.model.Wine;
 public class WinesInteractor {
 
     @Inject
-    User userModel;
+    WineDbModel model;
 
     public WinesInteractor() {
         WineCatalogApplication.injector.inject(this);
     }
 
-    public List<Wine> getWines() {
-        List<Wine> result = new ArrayList<>();
-        if (userModel != null)
-            return result = userModel.getWines();
-        return result;
+    public void addWineToDb(User user, Wine wine) {
+        model.insertWineForUser(user, wine);
     }
 
-    public String getUsername() {
-        String username = "";
-        if (userModel != null)
-            username = userModel.getUsername();
-        return username;
+    public List<Wine> getWinesFromDb() {
+        return model.fetchWines();
     }
 
+    public List<Wine> getWinesOfUserFromDb(User user) {
+        return model.fetchWinesOfUser(user);
+    }
 }

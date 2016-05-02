@@ -1,6 +1,9 @@
 package mobsoft.winecatalog.model.prod;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import mobsoft.winecatalog.model.User;
 import mobsoft.winecatalog.model.Wine;
@@ -11,10 +14,20 @@ import mobsoft.winecatalog.model.Wine;
  */
 public class WineDbModel {
 
+    @Inject
+    private UserDbModel userDb;
+
     public WineDbModel() { }
 
-    public List<Wine> fetchWinesOfUser(User user) {
-        List<Wine> values = user.getWines();
+    public List<Wine> fetchWines() {
+        List<Wine> values = Wine.listAll(Wine.class);
+        return values;
+    }
+    public List<Wine> fetchWinesOfUser(User actualUser) {
+        List<Wine> values = new ArrayList<>();
+        User user = userDb.getUser(actualUser.getUsername());
+        if (user != null)
+            values = user.getWines();
         return values;
     }
 

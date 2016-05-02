@@ -41,7 +41,6 @@ public class WineListActivity extends AppCompatActivity implements WineListScree
         listView.setAdapter(winesAdapter);
 
         if (BuildConfig.FLAVOR.equals("mock")) {
-            showWines(new MockUser().getWines());
         }
     }
 

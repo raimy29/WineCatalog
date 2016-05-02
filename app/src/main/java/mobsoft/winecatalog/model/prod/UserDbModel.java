@@ -11,6 +11,16 @@ public class UserDbModel {
 
     public UserDbModel() { }
 
+    public User getUser(String username) {
+        List<User> values = User.listAll(User.class);
+        for (User user : values) {
+            if (user.getUsername().contentEquals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
     public List<User> fetchUsers() {
         List<User> values = User.listAll(User.class);
         return values;
