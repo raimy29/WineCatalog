@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Wine extends SugarRecord {
 
-    private enum Type {
+    public enum Type {
         FEHER, VOROS, ROSE
     }
 

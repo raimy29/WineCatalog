@@ -24,9 +24,11 @@ android {
 
     productFlavors {
         prod {
+            applicationId = "mobsoft.winecatalog.prod"
         }
 
         mock {
+            applicationId = "mobsoft.winecatalog.mock"
         }
     }
 }

@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import mobsoft.winecatalog.interactor.InteractorModule;
 import mobsoft.winecatalog.interactor.WinesInteractor;
-import mobsoft.winecatalog.model.ModelModule;
+import mobsoft.winecatalog.model.prod.ModelModule;
 import mobsoft.winecatalog.ui.main.MainActivity;
 import mobsoft.winecatalog.ui.UIModule;
 import mobsoft.winecatalog.ui.main.MainPresenter;
