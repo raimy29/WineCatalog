@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mobsoft.winecatalog">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".WineCatalogApplication"
         android:allowBackup="true"
@@ -30,6 +33,10 @@
             android:name=".ui.details.WineDetailsActivity"
             android:label="@string/wineDetails">
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="dbb17e465ab919efe8b48247ff8fb663d3e300af" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

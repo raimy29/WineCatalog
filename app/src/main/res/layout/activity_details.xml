@@ -95,7 +95,7 @@
             android:id="@+id/ddRating"
             android:spinnerMode="dialog"
             android:layout_gravity="center_horizontal"
-            android:prompt="@string/rating_prompt"/>
+            android:prompt="@string/rating_prompt" />
     </LinearLayout>
 
     <Button

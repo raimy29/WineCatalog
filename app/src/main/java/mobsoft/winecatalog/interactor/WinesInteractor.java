@@ -20,8 +20,8 @@ public class WinesInteractor {
         WineCatalogApplication.injector.inject(this);
     }
 
-    public void addWineToDb(Wine wine) {
-        model.insertWineForUser(wine);
+    public WineDbModel addWineToDb(Wine wine) {
+        return model.insertWineForUser(wine);
     }
 
     public void addWineToNetwork(Wine wine) throws Exception {

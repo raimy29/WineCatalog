@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import mobsoft.winecatalog.WineCatalogApplication;
 import mobsoft.winecatalog.interactor.WinesInteractor;
-import mobsoft.winecatalog.model.User;
 import mobsoft.winecatalog.model.Wine;
+import mobsoft.winecatalog.model.prod.WineDbModel;
 import mobsoft.winecatalog.ui.Presenter;
 
 /**
@@ -18,6 +18,8 @@ public class WineListPresenter extends Presenter<WineListScreen> {
     @Inject
     public WinesInteractor interactor;
 
+    private WineDbModel model;
+
     public WineListPresenter() {
         WineCatalogApplication.injector.inject(this);
     }
@@ -26,7 +28,7 @@ public class WineListPresenter extends Presenter<WineListScreen> {
         try {
             interactor.addWineToNetwork(wine);
         } catch (Exception e) {
-            interactor.addWineToDb(wine);
+            model = interactor.addWineToDb(wine);
             screen.showMessage(e.getMessage());
         }
     }

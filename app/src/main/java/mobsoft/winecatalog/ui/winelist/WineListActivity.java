@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.orm.SugarContext;
 
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ import mobsoft.winecatalog.R;
 import mobsoft.winecatalog.WineCatalogApplication;
 import mobsoft.winecatalog.model.User;
 import mobsoft.winecatalog.model.Wine;
+import mobsoft.winecatalog.model.mock.MockWineDbModel;
 import mobsoft.winecatalog.ui.details.WineDetailsActivity;
 import mobsoft.winecatalog.ui.main.MainActivity;
 
@@ -28,17 +32,22 @@ public class WineListActivity extends AppCompatActivity implements WineListScree
     @Inject
     WineListPresenter wineListPresenter;
 
+    private Tracker mTracker;
+
     private ListView listView;
     private WinesAdapter winesAdapter;
     private List<Wine> wineList;
     private String username;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winelist);
         WineCatalogApplication.injector.inject(this);
+
+        WineCatalogApplication application = (WineCatalogApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         username = (String) getIntent().getExtras().get(MainActivity.KEY_USER);
         setTitle(getTitle() + " - " + username);
 
@@ -46,6 +55,13 @@ public class WineListActivity extends AppCompatActivity implements WineListScree
         winesAdapter = new WinesAdapter(this, R.layout.wine_item, wineList);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(winesAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTracker.setScreenName("WineListActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override

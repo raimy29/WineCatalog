@@ -7,6 +7,8 @@ import mobsoft.winecatalog.interactor.InteractorModule;
 import mobsoft.winecatalog.interactor.UserInteractor;
 import mobsoft.winecatalog.interactor.WinesInteractor;
 import mobsoft.winecatalog.model.prod.ModelModule;
+import mobsoft.winecatalog.ui.details.WineDetailsActivity;
+import mobsoft.winecatalog.ui.details.WineDetailsPresenter;
 import mobsoft.winecatalog.ui.main.MainActivity;
 import mobsoft.winecatalog.ui.UIModule;
 import mobsoft.winecatalog.ui.main.MainPresenter;
@@ -21,6 +23,8 @@ import mobsoft.winecatalog.ui.winelist.WineListPresenter;
 public interface WineCatalogApplicationComponent {
         void inject(MainActivity mainActivity);
 
+        void inject(WineDetailsActivity wineDetailsActivity);
+
         void inject(WineListActivity wineListActivity);
 
         void inject(MainPresenter mainPresenter);
@@ -30,6 +34,8 @@ public interface WineCatalogApplicationComponent {
         void inject(WinesInteractor winesInteractor);
 
         void inject(UserInteractor userInteractor);
+
+        void inject(WineDetailsPresenter wineDetailsPresenter);
 
         void inject(WineCatalogApplication app);
 

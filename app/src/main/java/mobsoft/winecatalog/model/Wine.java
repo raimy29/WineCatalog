@@ -9,14 +9,10 @@ import java.util.List;
  */
 public class Wine extends SugarRecord {
 
-    public enum Type {
-        FEHER, VOROS, ROSE
-    }
-
     private String name;
     private String winery;
     private String grapeVariety;
-    private Type type;
+    private String type;
     private int rating;
 
     private User user;
@@ -49,11 +45,11 @@ public class Wine extends SugarRecord {
         this.grapeVariety = grapeVariety;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 

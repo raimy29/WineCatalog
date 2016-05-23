@@ -31,9 +31,11 @@ public class WineDbModel {
         return values;
     }
 
-    public void insertWineForUser(Wine wine) {
+    public WineDbModel insertWineForUser(Wine wine) {
+        wine.setUser(userDb.getUser("Demo"));
         wine.getUser().save();
         wine.save();
+        return this;
     }
 
     public void deleteWineFromUser(Wine wine) {

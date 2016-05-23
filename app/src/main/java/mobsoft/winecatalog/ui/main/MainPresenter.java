@@ -4,9 +4,7 @@ import javax.inject.Inject;
 
 import mobsoft.winecatalog.WineCatalogApplication;
 import mobsoft.winecatalog.interactor.UserInteractor;
-import mobsoft.winecatalog.interactor.WinesInteractor;
 import mobsoft.winecatalog.model.User;
-import mobsoft.winecatalog.model.Wine;
 import mobsoft.winecatalog.ui.Presenter;
 
 /**

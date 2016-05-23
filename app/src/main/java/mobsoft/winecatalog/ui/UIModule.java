@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import mobsoft.winecatalog.ui.details.WineDetailsPresenter;
 import mobsoft.winecatalog.ui.main.MainPresenter;
 import mobsoft.winecatalog.ui.winelist.WineListPresenter;
 
@@ -35,6 +36,12 @@ public class UIModule {
     @Singleton
     public WineListPresenter getWineListPresenter() {
         return new WineListPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public WineDetailsPresenter getWineDetailsPresenter() {
+        return new WineDetailsPresenter();
     }
 
 }

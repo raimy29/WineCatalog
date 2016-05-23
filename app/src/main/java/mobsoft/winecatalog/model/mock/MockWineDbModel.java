@@ -26,11 +26,11 @@ public class MockWineDbModel extends WineDbModel {
                 if (i % 2 == 0) {
                     wine.setName("Leanykak " + i);
                     wine.setWinery("Nyolcas");
-                    wine.setType(Wine.Type.FEHER);
+                    wine.setType("Feher");
                 } else {
                     wine.setName("Medvetalp " + i);
                     wine.setWinery("Bukolyi");
-                    wine.setType(Wine.Type.VOROS);
+                    wine.setType("Voros");
                 }
                 wine.setUser(user);
                 values.add(wine);
@@ -56,9 +56,11 @@ public class MockWineDbModel extends WineDbModel {
     }
 
     @Override
-    public void insertWineForUser(Wine wine) {
+    public WineDbModel insertWineForUser(Wine wine) {
+        wine.setUser(mockUserDb.getUser("Demo"));
         mockUserDb.insertUser(wine.getUser());
         values.add(wine);
+        return this;
     }
 
     @Override
